@@ -2,6 +2,8 @@ package com.softuni.springworkshop.service;
 
 import com.softuni.springworkshop.service.models.UserLoginServiceModel;
 import com.softuni.springworkshop.service.models.UserRegisterServiceModel;
+import com.softuni.springworkshop.service.models.UserWithIdServiceModel;
+import com.softuni.springworkshop.service.models.UserWithUsernameServiecModel;
 import com.softuni.springworkshop.web.models.RoleAddModel;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
@@ -12,4 +14,6 @@ public interface UserService extends UserDetailsService {
     boolean login(UserLoginServiceModel user);
     void changeRole(RoleAddModel roleAdd);
     List<String> getUsernames();
+    UserWithIdServiceModel getUserById(String id);
+    UserWithUsernameServiecModel getByUsername(String username);
 }

@@ -8,6 +8,8 @@ import com.softuni.springworkshop.service.UserAuthService;
 import com.softuni.springworkshop.service.UserService;
 import com.softuni.springworkshop.service.models.UserLoginServiceModel;
 import com.softuni.springworkshop.service.models.UserRegisterServiceModel;
+import com.softuni.springworkshop.service.models.UserWithIdServiceModel;
+import com.softuni.springworkshop.service.models.UserWithUsernameServiecModel;
 import com.softuni.springworkshop.web.models.RoleAddModel;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +70,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void changeRole(RoleAddModel roleAdd) {
         User byUsername = this.userRepository.findByUsername(roleAdd.getUsername());
-        if (byUsername == null){
+        if (byUsername == null) {
             return;
         }
         Set<Role> authorities = byUsername.getAuthorities();
@@ -87,6 +89,19 @@ public class UserServiceImpl implements UserService {
                 .stream()
                 .map(User::getUsername)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserWithIdServiceModel getUserById(String id) {
+        return this.mapper
+                .map(this.userRepository.findById(id), UserWithIdServiceModel.class);
+    }
+
+    @Override
+    public UserWithUsernameServiecModel getByUsername(String username) {
+        return this.mapper
+                .map(this.userRepository.findByUsername(username),
+                        UserWithUsernameServiecModel.class);
     }
 
     @Override

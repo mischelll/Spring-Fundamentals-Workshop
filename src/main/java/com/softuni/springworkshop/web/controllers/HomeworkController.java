@@ -31,6 +31,13 @@ public class HomeworkController {
         this.exerciseService = exerciseService;
     }
 
+    @GetMapping("/check")
+    public ModelAndView getHomeworkCheck(ModelAndView modelAndView){
+        modelAndView.setViewName("homework-check");
+
+        return modelAndView;
+    }
+
     @GetMapping("/add")
     public ModelAndView getAddHomework(@Valid @ModelAttribute("homework")
                                                HomeworkAddModel homework,

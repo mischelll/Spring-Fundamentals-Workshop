@@ -11,15 +11,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/users")
@@ -32,6 +30,21 @@ public class UserController {
         this.userService = userService;
         this.mapper = mapper;
     }
+
+//    @GetMapping("/profile/{id}")
+//    public ModelAndView getUserProfile(@PathVariable("id") String userId, ModelAndView modelAndView,
+//                                       Principal principal) {
+//        String userName = principal.getName();
+//        userId = this.userService.getByUsername(userName).getId();
+//        if (!userId.equals(this.userService.getByUsername(userName).getId())) {
+//            modelAndView.setViewName("error");
+//        } else {
+//            modelAndView.setViewName("profile");
+//        }
+//
+//
+//        return modelAndView;
+//    }
 
     @GetMapping("/login")
     public ModelAndView getLogin(HttpSession session) {
