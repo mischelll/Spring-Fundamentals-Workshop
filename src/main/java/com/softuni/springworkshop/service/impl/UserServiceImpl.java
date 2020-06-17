@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
@@ -102,6 +103,16 @@ public class UserServiceImpl implements UserService {
         return this.mapper
                 .map(this.userRepository.findByUsername(username),
                         UserWithUsernameServiecModel.class);
+    }
+
+    @Override
+    public List<String> getTopThreeStudents() {
+        return this.userRepository
+                .findAll()
+                .stream()
+                .limit(3)
+                .map(User::getUsername)
+                .collect(Collectors.toList());
     }
 
     @Override

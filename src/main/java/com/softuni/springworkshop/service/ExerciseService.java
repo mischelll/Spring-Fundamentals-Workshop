@@ -12,4 +12,6 @@ public interface ExerciseService {
     List<String> getAllExercises();
 
     Exercise findByName(String name);
+
+    List<String> getAllActiveExercises();
 }

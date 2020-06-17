@@ -16,4 +16,5 @@ public interface UserService extends UserDetailsService {
     List<String> getUsernames();
     UserWithIdServiceModel getUserById(String id);
     UserWithUsernameServiecModel getByUsername(String username);
+    List<String> getTopThreeStudents();
 }
