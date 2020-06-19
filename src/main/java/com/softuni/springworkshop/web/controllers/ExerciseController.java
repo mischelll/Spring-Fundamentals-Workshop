@@ -18,6 +18,7 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/exercises")
 public class ExerciseController {
+    private static final String REDIRECT_EXERCISE_ADD = "redirect:/exercises/add";
     private final ModelMapper mapper;
     private final ExerciseService exerciseService;
 
@@ -40,16 +41,16 @@ public class ExerciseController {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("exerciseAdd", exerciseAdd);
-            model.setViewName("redirect:/exercises/add");
+            model.setViewName(REDIRECT_EXERCISE_ADD);
         } else {
             ExerciseAddServiceModel exerciseAddServiceModel = this.exerciseService
                     .createExercise(this.mapper.map(exerciseAdd, ExerciseAddServiceModel.class));
 
             if (exerciseAddServiceModel == null) {
                 //TODO throw error if exercise exists
-                model.setViewName("redirect:/exercises/add");
+                model.setViewName(REDIRECT_EXERCISE_ADD);
             } else {
-                model.setViewName("redirect:/home");
+                model.setViewName(REDIRECT_EXERCISE_ADD);
             }
         }
 
