@@ -38,7 +38,6 @@
                                         name="exercise">
                                     <option selected>Select exercise</option>
                                     <th:block th:each="e : ${exercises}">
-
                                         <option th:text="${e}">Exercise One</option>
                                     </th:block>
                                 </select>
@@ -53,7 +52,6 @@
                             <th:block th:each="e : ${#fields.errors('git')}">
                                 <small th:text="${e}" class="text-danger">Invalid github address</small>
                             </th:block>
-
                             <div class="input-group mb-3">
                                 <div class="ml-auto col-xl-8 col-lg-8 col-md-8 col-sm-7 pl-0">
                                     <button type="submit" class="btn btn-primary">Add
@@ -67,7 +65,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
