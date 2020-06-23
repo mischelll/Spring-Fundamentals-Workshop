@@ -76,7 +76,6 @@ public class UserServiceImpl implements UserService {
         }
         Set<Role> authorities = byUsername.getAuthorities();
         authorities.add(this.roleService.findByAuthority(roleAdd.getRole().toUpperCase()));
-
         byUsername.setAuthorities(authorities);
 
         this.userRepository.saveAndFlush(byUsername);
@@ -84,7 +83,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<String> getUsernames() {
-
         return this.userRepository
                 .findAll()
                 .stream()
